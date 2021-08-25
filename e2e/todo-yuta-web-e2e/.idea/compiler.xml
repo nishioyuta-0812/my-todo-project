@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="gauge_java_maven" />
+        <module name="todo-yuta-web-e2e" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="gauge_java_maven" target="11" />
+      <module name="todo-yuta-web-e2e" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

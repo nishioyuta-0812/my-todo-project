@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/gauge_java_maven.iml" filepath="$PROJECT_DIR$/gauge_java_maven.iml" />
+      <module fileurl="file://$PROJECT_DIR$/todo-yuta-web-e2e.iml" filepath="$PROJECT_DIR$/todo-yuta-web-e2e.iml" />
     </modules>
   </component>
 </project>
