@@ -19,6 +19,6 @@ class TestBase {
 
     @Step("Topページを見ることができる")
     fun displayTopPage(){
-        `$`("page-title").shouldHave(text("今日のやることリスト"))
+        `$`(".page-title").shouldHave(text("今日のやることリスト"))
     }
 }
