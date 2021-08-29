@@ -38,6 +38,12 @@
             <version>${kotlin.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>5.23.3</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
