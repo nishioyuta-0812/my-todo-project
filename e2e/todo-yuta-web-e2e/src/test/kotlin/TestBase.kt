@@ -1,4 +1,5 @@
 import com.codeborne.selenide.Condition
+import com.codeborne.selenide.Condition.exist
 import com.codeborne.selenide.Condition.text
 import com.codeborne.selenide.Selenide.*
 import com.thoughtworks.gauge.BeforeScenario
@@ -20,5 +21,10 @@ class TestBase {
     @Step("Topページを見ることができる")
     fun displayTopPage(){
         `$`(".page-title").shouldHave(text("今日のやることリスト"))
+    }
+
+    @Step("やることの一覧が表示されている")
+    fun displayTodolist(){
+        `$`(".todo-list").should(exist)
     }
 }
