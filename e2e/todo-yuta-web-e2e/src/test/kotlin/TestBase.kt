@@ -37,4 +37,9 @@ class TestBase {
     fun displayTodoIcon(){
         `$$`(".todo-item")[0].`$`(".todo-icon").should(exist)
     }
+
+    @Step("タスクの新規作成のボタンを見ることができる")
+    fun displayCreateTaskButton(){
+        `$`(".create-task").should(exist)
+    }
 }
