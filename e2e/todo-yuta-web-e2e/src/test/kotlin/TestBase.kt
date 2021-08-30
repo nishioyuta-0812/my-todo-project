@@ -20,11 +20,21 @@ class TestBase {
 
     @Step("Topページを見ることができる")
     fun displayTopPage(){
-        `$`(".page-title").shouldHave(text("今日のやることリスト"))
+        `$`(".page-title").shouldHave(text("TODO APP"))
     }
 
     @Step("やることの一覧が表示されている")
-    fun displayTodolist(){
-        `$`(".todo-list").should(exist)
+    fun displayTodoItems(){
+        `$`(".todo-items").should(exist)
+    }
+
+    @Step("一つ目のやることのタイトルに<title>と表示されている")
+    fun displayTodoTitle(title: String){
+        `$$`(".todo-title")[0].shouldHave(text(title))
+    }
+
+    @Step("一つ目のやることにアイコンが表示されている")
+    fun displayTodoIcon(){
+        `$$`(".todo-item")[0].`$`(".todo-icon").should(exist)
     }
 }
