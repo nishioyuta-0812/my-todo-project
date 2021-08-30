@@ -40,6 +40,6 @@ class TestBase {
 
     @Step("タスクの新規作成のボタンを見ることができる")
     fun displayCreateTaskButton(){
-        `$`(".create-task").should(exist)
+        `$`(".create-task-button").should(exist)
     }
 }

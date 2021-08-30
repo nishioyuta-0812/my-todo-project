@@ -9,6 +9,7 @@ function Todo_items(){
             <Todo_item></Todo_item>
             <Todo_item></Todo_item>
             <Todo_item></Todo_item>
+            <p className='create-task-button'>Create Task</p>
         </div>
     );
 }
