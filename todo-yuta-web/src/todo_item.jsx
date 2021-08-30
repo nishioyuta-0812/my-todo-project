@@ -5,6 +5,9 @@ function Todo_item(){
         <div className='todo-item'>
             <i className='todo-icon'></i>
             <p　className='todo-title'>今日はこれをやる</p>
+            <div className='done-task-button'>
+                <p>DONE</p>
+            </div>
         </div>
     );
 }
