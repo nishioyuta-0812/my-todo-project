@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function CreateTaskButton(){
 
     return (
-        <div className='create-task-button' to="/create-task">
+        <div className='create-task-button'>
             <Link to="/create-task">Create Task</Link>
         </div>
     );
