@@ -58,4 +58,9 @@ class TestBase {
         `$`(".create-task").should(exist)
     }
 
+    @Step("戻るボタンをクリックする")
+    fun clickBackTopButton(){
+        `$`(".back-top-button").click()
+    }
+
 }
