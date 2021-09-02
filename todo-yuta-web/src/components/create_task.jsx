@@ -3,14 +3,14 @@ import ContentsTitle from './contents_title';
 import './create_task.scss';
 
 
-function CreateTask(){
+function CreateTask(props){
     return (
         <div className='create-task'>
             <ContentsTitle title={'Create Task'}></ContentsTitle>
             <div className='create-form'>
 
             </div>
-            <BackTopButton></BackTopButton>
+            <BackTopButton onClick={() => props.onClick()}></BackTopButton>
 
         </div>
     );

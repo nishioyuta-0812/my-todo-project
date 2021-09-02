@@ -1,10 +1,10 @@
-import com.codeborne.selenide.Condition
 import com.codeborne.selenide.Condition.exist
 import com.codeborne.selenide.Condition.text
 import com.codeborne.selenide.Selenide.*
 import com.thoughtworks.gauge.BeforeScenario
 import com.thoughtworks.gauge.Step
 import io.github.bonigarcia.wdm.WebDriverManager
+import org.amshove.kluent.*
 
 class TestBase {
 
@@ -62,5 +62,27 @@ class TestBase {
     fun clickBackTopButton(){
         `$`(".back-top-button").click()
     }
+
+    @Step("ラベルに<text>が表示されている")
+    fun displayLabelWithText(text: String){
+        `$`(".label").shouldHave(text(text))
+    }
+
+    @Step("タイトルの入力欄が表示されている")
+    fun displayTitleInput(){
+        `$`(".title-input").should(exist)
+    }
+
+    @Step("タイトルに<text>と入力する")
+    fun inputTitleText(text: String){
+        `$`(".input-title").value = text
+    }
+
+    @Step("タイトル入力欄に<text>と表示されている")
+    fun titleInputShouldContainText(text: String){
+        `$`(".input-title").should(exist).value.shouldBeEqualTo(text)
+    }
+
+
 
 }

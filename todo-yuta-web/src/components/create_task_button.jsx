@@ -1,11 +1,8 @@
 import './create_task_button.scss';
-import { Link } from 'react-router-dom'
-
-function CreateTaskButton(){
-
+function CreateTaskButton(props){
     return (
         <div className='create-task-button'>
-            <Link to="/create-task">Create Task</Link>
+            <p onClick={() => props.onClick()}>Create Task</p>
         </div>
     );
 }

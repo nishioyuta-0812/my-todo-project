@@ -1,10 +1,9 @@
-import { Link } from 'react-router-dom'
 import './back_top_button.scss'
 
-function BackTopButton(){
+function BackTopButton(props){
     return (
         <div className='back-top-button' >
-            <Link to="/">Back Home</Link>
+            <p onClick={() => props.onClick()}>Back Home</p>
         </div>
     );
 }
