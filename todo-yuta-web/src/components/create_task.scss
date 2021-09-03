@@ -7,7 +7,24 @@
         background-color:rgba(231, 228, 228, 0.5);
         box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .7);
         border-radius: 50px;
-        align-items: center;
         display: flex;
+
+        .title{
+            margin-top: 5%;
+            margin-left: 10%;
+            .label{
+                font-family: cursive;
+                font-size: 150%;
+                margin-bottom: 5px;
+                margin-left: 5px;
+            }
+
+            .input-title{
+                font-size: 110%;
+                width: 200%;
+                height: 8%;
+                border-radius: 20px;
+            }
+        }
     }
 }

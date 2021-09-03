@@ -70,7 +70,7 @@ class TestBase {
 
     @Step("タイトルの入力欄が表示されている")
     fun displayTitleInput(){
-        `$`(".title-input").should(exist)
+        `$`(".input-title").should(exist)
     }
 
     @Step("タイトルに<text>と入力する")
