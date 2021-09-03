@@ -63,9 +63,9 @@ class TestBase {
         `$`(".back-top-button").click()
     }
 
-    @Step("ラベルに<text>が表示されている")
-    fun displayLabelWithText(text: String){
-        `$`(".label").shouldHave(text(text))
+    @Step("タイトルのラベルに<text>が表示されている")
+    fun displayTitleLabelWithText(text: String){
+        `$`(".title .label").shouldHave(text(text))
     }
 
     @Step("タイトルの入力欄が表示されている")
@@ -81,6 +81,26 @@ class TestBase {
     @Step("タイトル入力欄に<text>と表示されている")
     fun titleInputShouldContainText(text: String){
         `$`(".input-title").should(exist).value.shouldBeEqualTo(text)
+    }
+
+    @Step("詳細のラベルに<text>と表示されている")
+    fun displayDescriptionLabelWithText(text: String){
+        `$`(".description .label").shouldHave(text(text))
+    }
+
+    @Step("詳細の入力欄が表示されている")
+    fun displayInputDescription(){
+        `$`(".input-description").should(exist)
+    }
+
+    @Step("詳細入力欄に<text>と入力する")
+    fun inputDescriptionText(text: String){
+        `$`(".input-description").value = text
+    }
+
+    @Step("詳細入力欄に<text>と表示されている")
+    fun descriptionInputShouldContainText(text: String){
+        `$`(".input-description").should(exist).value.shouldBeEqualTo(text)
     }
 
 

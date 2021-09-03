@@ -12,7 +12,7 @@ function CreateTask(props){
             <ContentsTitle title={'Create Task'}></ContentsTitle>
             <div className='create-form'>
                 <div className='title'>
-                    <p className='label'>title</p>
+                    <p className='label'>Title</p>
                     <input　className='input-title' type="text" value={title} onChange={(e) =>  setTitle(e.target.value)} />
                 </div>
 
