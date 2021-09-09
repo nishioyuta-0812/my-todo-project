@@ -5,9 +5,19 @@ import com.thoughtworks.gauge.BeforeScenario
 import com.thoughtworks.gauge.Step
 import io.github.bonigarcia.wdm.WebDriverManager
 import org.amshove.kluent.*
+import org.dbunit.Assertion
+import java.sql.Connection
+import java.sql.DriverManager
+import org.dbunit.database.DatabaseConnection
+
+import org.dbunit.database.IDatabaseConnection
+import org.dbunit.dataset.csv.CsvDataSet
+import org.dbunit.dataset.filter.DefaultColumnFilter
+
+import java.io.File
+
 
 class TestBase {
-
     @BeforeScenario
     fun setUp(){
         WebDriverManager.chromedriver().setup()
@@ -103,6 +113,24 @@ class TestBase {
         `$`(".input-description").should(exist).value.shouldBeEqualTo(text)
     }
 
+    @Step("タスクの登録ボタンをクリックする")
+    fun clickRegisterTaskButton(){
+        `$`(".register-task-button").click()
+    }
 
+    @Step("DBに<scenario>のデータが登録されたこと")
+    fun verifyDd(scenario: String){
+        val conn = DriverManager.getConnection("jdbc:postgresql://localhost:15432/ytodo", "admin", "admin")
+        val filterColumns = arrayOf("created_at")
+        val dbconn: IDatabaseConnection = DatabaseConnection(conn,"ytodo")
+        val expect = CsvDataSet(File("src/test/resources/expect/${scenario}/")).getTable("task").let {
+            DefaultColumnFilter.excludedColumnsTable(it,filterColumns)
+        }
+        val result = dbconn.createDataSet().getTable("task").let {
+            DefaultColumnFilter.excludedColumnsTable(it,filterColumns)
+        }
+        Assertion.assertEquals(expect, result)
+        dbconn.close()
+    }
 
 }

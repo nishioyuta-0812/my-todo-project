@@ -7,7 +7,7 @@ import ContentsTitle from './contents_title';
 function Todo_items(props){
     return (
         <div className='todo-items'>
-            <ContentsTitle title={"Today's TODO"}></ContentsTitle>
+            <ContentsTitle title={"Today's Tasks"}></ContentsTitle>
             <Todo_item></Todo_item>
             <Todo_item></Todo_item>
             <Todo_item></Todo_item>
