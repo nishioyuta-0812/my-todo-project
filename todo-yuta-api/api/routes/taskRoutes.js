@@ -3,7 +3,6 @@ module.exports = function(app) {
 
     app.route('/tasks')
     
-
     app.route('/create')
     .post(taskList.create_task);
     app.route('/delete/:taskId')
