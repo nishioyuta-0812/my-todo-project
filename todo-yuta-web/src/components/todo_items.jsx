@@ -8,9 +8,9 @@ function Todo_items(props){
     return (
         <div className='todo-items'>
             <ContentsTitle title={"Today's Tasks"}></ContentsTitle>
-            <Todo_item></Todo_item>
-            <Todo_item></Todo_item>
-            <Todo_item></Todo_item>
+            {props.tasks.map(task =>  
+                <Todo_item task={task} ></Todo_item>
+            )}
             <CreateTaskButton onClick={() => props.onClick()}></CreateTaskButton>
         </div>
     );
