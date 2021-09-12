@@ -17,3 +17,13 @@ exports.get_tasks = function(req, res) {
         res.send({tasks: tasks});
     });
 };
+
+exports.delete_task = function(req, res) {
+    db.task.destroy({
+        where: {
+            id: [req.params.taskId]
+        }
+    }).then(() => {
+        res.send("Data Deleted.");
+    });
+};

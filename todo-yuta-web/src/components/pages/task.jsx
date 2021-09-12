@@ -9,17 +9,16 @@ function Task(){
 
     const [isCreate,setIsCreate] = useState(false);
     const [tasks,setTasks] = useState([]);
-    const taskController = new TaskController();
-    
-    useEffect(() => {
-        console.log('gettasks');
-        const f = async () => {
-           const tasksEntity = await taskController.getTasks();
-           setTasks(tasksEntity);
-        };
-        f();
-        
+    const task_Controller = new TaskController();
 
+    const f = async () => {
+        const tasksEntity = await task_Controller.getTasks();
+        console.log(tasksEntity);
+        setTasks(tasksEntity);
+     };
+
+    useEffect(() => {
+         f();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[isCreate]);
 
@@ -31,12 +30,16 @@ function Task(){
         setIsCreate(false);
     }
 
+    const handleDoneTask = () => {
+        f();
+    }
+
     return(
         <div className='task'>
             { isCreate ? (
                     <CreateTask className='slidein' setIsCreate={() => setIsCreate()} onClick={() => handleClickBackHome()}></CreateTask>
                 ) :(
-                    <Todo_items className='slidein' onClick={() => handleClickCreateTask()} tasks={tasks}></Todo_items>
+                    <Todo_items className='slidein' onClick={() => handleClickCreateTask()} handleDoneTask={() => handleDoneTask()}　tasks={tasks}></Todo_items>
             )}
         </div>
     );

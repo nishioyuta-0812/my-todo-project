@@ -22,5 +22,13 @@ export class TaskController{
             return res.data.tasks;
         })
     }
+
+    async deleteTack(id){
+        await axios.delete(`http://localhost:3000/delete/${id}`)
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+          })
+    }
    
 }
