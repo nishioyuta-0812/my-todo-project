@@ -7,5 +7,13 @@ exports.create_task = function(req, res) {
         task_descrption: req.body.task.description
       }).then(() => {
         res.send("Data Created.");
-      });
-  };
+    });
+};
+
+
+exports.get_tasks = function(req, res) {
+    db.task.findAll()
+    .then((tasks) => {
+        res.send({tasks: tasks});
+    });
+};
