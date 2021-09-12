@@ -13,7 +13,6 @@ function Task(){
 
     const f = async () => {
         const tasksEntity = await task_Controller.getTasks();
-        console.log(tasksEntity);
         setTasks(tasksEntity);
      };
 
