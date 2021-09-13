@@ -2,7 +2,7 @@ import axios from "axios";
 
 export class TaskController{
     
-    async registerTask(title, description) {
+    async registerTask(title: any, description: any) {
         const task = {
             title: title,
             description: description
@@ -23,7 +23,7 @@ export class TaskController{
         })
     }
 
-    async deleteTack(id){
+    async deleteTack(id: any){
         await axios.delete(`http://localhost:3000/delete/${id}`)
         .then(res => {
             console.log(res);
