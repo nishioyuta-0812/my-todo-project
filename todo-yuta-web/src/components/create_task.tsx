@@ -7,7 +7,7 @@ import RegisterTaskbutton from './register_task_button';
 
 
 
-function CreateTask(props){
+function CreateTask(props: any){
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('')
     const taskController = new TaskController();
@@ -23,11 +23,11 @@ function CreateTask(props){
             <div className='create-form'>
                 <div className='title'>
                     <p className='label'>Title</p>
-                    <input　className='input-title' type="text" value={title} onChange={(e) =>  setTitle(e.target.value)} />
+                    <input　className='input-title' type="text" value={title} onChange={(e: any) => setTitle(e.target.value)} />
                 </div>
                 <div className='description'>
                     <p className='label'>Description</p>
-                    <textarea  className='input-description' value={description} onChange={(e) => setDescription(e.target.value)} cols="30" rows="10"></textarea>
+                    <textarea  className='input-description' value={description} onChange={(e: any) => setDescription(e.target.value)} cols={30} rows={10}></textarea>
                 </div>
                 <RegisterTaskbutton onClick={() => handleClickRegisterTask()}></RegisterTaskbutton>
             </div>

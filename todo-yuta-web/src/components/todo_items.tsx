@@ -4,7 +4,7 @@ import Todo_item from './todo_item';
 import CreateTaskButton from './create_task_button';
 import ContentsTitle from './contents_title';
 
-function Todo_items(props){
+function Todo_items(props: any){
 
     const handleDoneTask = () => {
         props.handleDoneTask();
@@ -14,7 +14,7 @@ function Todo_items(props){
         <div className='todo-items'>
             <ContentsTitle title={"Today's Tasks"}></ContentsTitle>
             <div className='items'>
-                {props.tasks.map((task,index) =>  
+                {props.tasks.map((task: any,index: any) =>  
                     <Todo_item task={task} key={index} handleDoneTask={() => handleDoneTask()}></Todo_item>
                 )}
             </div>

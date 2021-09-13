@@ -36,7 +36,7 @@ function Task(){
     return(
         <div className='task'>
             { isCreate ? (
-                    <CreateTask className='slidein' setIsCreate={() => setIsCreate()} onClick={() => handleClickBackHome()}></CreateTask>
+                    <CreateTask className='slidein' setIsCreate={() => setIsCreate(Boolean)} onClick={() => handleClickBackHome()}></CreateTask>
                 ) :(
                     <Todo_items className='slidein' onClick={() => handleClickCreateTask()} handleDoneTask={() => handleDoneTask()}　tasks={tasks}></Todo_items>
             )}

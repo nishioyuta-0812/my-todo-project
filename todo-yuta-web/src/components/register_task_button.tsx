@@ -1,6 +1,6 @@
 import './register_task_button.scss'
 
-function RegisterTaskbutton(props){
+function RegisterTaskbutton(props: any){
 
     return(
         <div className='register-task-button'>

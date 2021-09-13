@@ -2,7 +2,7 @@
 import { TaskController } from '../lib/controller/task_controller';
 import './todo_item.scss';
 
-function Todo_item(props){
+function Todo_item(props: any){
 
     const task_controller = new TaskController();
 
