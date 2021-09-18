@@ -4,7 +4,17 @@ import Todo_item from './todo_item';
 import CreateTaskButton from './create_task_button';
 import ContentsTitle from './contents_title';
 
-function Todo_items(props: any){
+interface Props {
+    tasks: Array<{
+        taskId: number
+        title: string
+        description: string
+    }>;
+    onClick: () => void;
+    handleDoneTask: () => void;
+}
+
+function Todo_items(props: Props){
 
     const handleDoneTask = () => {
         props.handleDoneTask();

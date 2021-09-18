@@ -1,6 +1,6 @@
 
 import { inject, injectable } from "tsyringe";
-import { Tasks } from "../domain/task";
+import { Description, TaskId, Tasks, Title } from "../domain/task";
 import  TaskPort  from "../port/TaskPort";
 
 @injectable()
@@ -9,7 +9,16 @@ export class TaskUseCase{
     constructor(@inject("TaskPort")readonly taskPort: TaskPort){}
 
     async getTasks(): Promise<Tasks>{
-        return new Tasks([]);
+        return await this.taskPort.getTasks();
+    }
+
+    async registerTask(title: Title, description: Description): Promise<void> {
+        await this.taskPort.registerTask(title,description);
+        console.log('create!!usecase');
+    }
+
+    async deleteById(id: TaskId): Promise<void>{
+        await this.taskPort.deleteById(id);
     }
 
 } 

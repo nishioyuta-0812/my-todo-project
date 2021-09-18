@@ -6,7 +6,7 @@ import './todo_item.scss';
 function Todo_item(props: any){
 
     const handleDone = async () => {
-        await container.resolve(TaskController).deleteTack(props.task.id);
+        await container.resolve(TaskController).deleteTack(props.task.taskId);
         props.handleDoneTask();
     };
 

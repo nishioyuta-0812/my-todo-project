@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-pascal-case */
 import { useState, useEffect } from "react";
 import { container } from 'tsyringe';
-import { TaskController } from "../../lib/controller/TaskController";
+import { TaskController, TasksUnit } from "../../lib/controller/TaskController";
 import CreateTask from "../create_task";
 import Todo_items from "../todo_items";
 import './task.scss';
@@ -9,7 +9,7 @@ import './task.scss';
 function Task(){
 
     const [isCreate,setIsCreate] = useState(false);
-    const [tasks,setTasks] = useState([]);
+    const [tasks,setTasks] = useState<TasksUnit>({tasks: []});
 
     const f = async () => {
         const tasksEntity = await container.resolve(TaskController).getTasks();
@@ -24,7 +24,7 @@ function Task(){
         setIsCreate(true);
     }
 
-    const handleClickBackHome = () => {
+    const handleClickBackHome = () => { 
         setIsCreate(false);
     }
 
@@ -35,9 +35,9 @@ function Task(){
     return(
         <div className='task'>
             { isCreate ? (
-                    <CreateTask className='slidein' setIsCreate={() => setIsCreate(Boolean)} onClick={() => handleClickBackHome()}></CreateTask>
+                    <CreateTask setIsCreate={setIsCreate} onClick={() => handleClickBackHome()}></CreateTask>
                 ) :(
-                    <Todo_items className='slidein' onClick={() => handleClickCreateTask()} handleDoneTask={() => handleDoneTask()}　tasks={tasks}></Todo_items>
+                    <Todo_items  onClick={() => handleClickCreateTask()} handleDoneTask={() => handleDoneTask()}　tasks={tasks.tasks}></Todo_items>
             )}
         </div>
     );

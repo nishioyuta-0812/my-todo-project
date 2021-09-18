@@ -1,5 +1,5 @@
 import { injectable } from "tsyringe";
-import { Tasks } from "../../domain/task";
+import { Description, Task, TaskId, Tasks, Title } from "../../domain/task";
 import  TaskPort  from "../../port/TaskPort";
 import { TaskDriver } from "../driver/TaskDriver";
 
@@ -7,7 +7,17 @@ import { TaskDriver } from "../driver/TaskDriver";
 export class TaskGateway implements TaskPort{
     constructor(readonly taskDriver: TaskDriver){}
     async getTasks(): Promise<Tasks> {
-        throw new Error("Method not implemented.");
+        
+        const taskEntiteis = await this.taskDriver.getTasks()
+        
+        return new Tasks( taskEntiteis.tasks.map((task) => new Task(new TaskId(task.id), new Title( task.title), new Description( task.task_description))));
     }
-
+    
+    async registerTask(title: Title, description: Description): Promise<void> {
+        await this.taskDriver.registerTask(title.value, description.value);
+    }
+    
+    async deleteById(id: TaskId): Promise<void> {
+        await this.taskDriver.deleteById(id.value);
+    }
 }

@@ -1,39 +1,44 @@
-import axios from "axios";
 import { injectable } from 'tsyringe';
+import { Description, TaskId, Title } from "../domain/task";
 import { TaskUseCase } from '../usecase/TaskUseCase'; 
 
 @injectable()
 export class TaskController{
     constructor(readonly taskUseCase: TaskUseCase){}
 
-    async registerTask(title: string, description: string) {
-        const task = {
-            title: title,
-            description: description
-        };
-
-        await axios.post('http://localhost:3000/create', {task})
-        .then(res => {
-            console.log(res);
-            console.log(res.data);
-          })
+    async registerTask(title: string, description: string): Promise<void> {
+        await this.taskUseCase.registerTask(new Title(title), new Description(description));
 
     }
 
-    async getTasks(): Promise<any>{
+    async getTasks(): Promise<TasksUnit>{
         
-        return await axios.get('http://localhost:3000/tasks')
-        .then(res => {
-            return res.data.tasks;
-        })
+        const tasks = await this.taskUseCase.getTasks();
+
+        return {
+            tasks: tasks.values.map((v) => (
+                {
+                    taskId: v.taskId.value,
+                    title: v.title.value,
+                    description: v.description.value
+                }
+                ))
+        }
     }
 
-    async deleteTack(id: number){
-        await axios.delete(`http://localhost:3000/delete/${id}`)
-        .then(res => {
-            console.log(res);
-            console.log(res.data);
-          })
+    async deleteTack(id: number): Promise<void>{
+        await this.taskUseCase.deleteById(new TaskId(id));
     }
-   
+
 }
+
+export interface TasksUnit {
+
+    tasks: Array<{
+        taskId: number
+        title: string
+        description: string
+    }>;
+
+}
+
