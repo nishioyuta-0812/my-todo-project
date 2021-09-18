@@ -1,9 +1,12 @@
+import "reflect-metadata";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { container } from "tsyringe";
+import { TaskGateway } from "./lib/controller/gateway/TaskGateway";
+container.register('TaskPort', {useClass: TaskGateway})
 ReactDOM.render(
   <React.StrictMode>
     <App />

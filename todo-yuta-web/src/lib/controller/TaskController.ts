@@ -1,8 +1,12 @@
 import axios from "axios";
+import { injectable } from 'tsyringe';
+import { TaskUseCase } from '../usecase/TaskUseCase'; 
 
+@injectable()
 export class TaskController{
-    
-    async registerTask(title: any, description: any) {
+    constructor(readonly taskUseCase: TaskUseCase){}
+
+    async registerTask(title: string, description: string) {
         const task = {
             title: title,
             description: description
@@ -16,14 +20,15 @@ export class TaskController{
 
     }
 
-    async getTasks(){
+    async getTasks(): Promise<any>{
+        
         return await axios.get('http://localhost:3000/tasks')
         .then(res => {
             return res.data.tasks;
         })
     }
 
-    async deleteTack(id: any){
+    async deleteTack(id: number){
         await axios.delete(`http://localhost:3000/delete/${id}`)
         .then(res => {
             console.log(res);

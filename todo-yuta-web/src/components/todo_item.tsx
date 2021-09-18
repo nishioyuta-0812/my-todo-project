@@ -1,13 +1,12 @@
 
-import { TaskController } from '../lib/controller/task_controller';
+import { container } from 'tsyringe';
+import { TaskController } from '../lib/controller/TaskController';
 import './todo_item.scss';
 
 function Todo_item(props: any){
 
-    const task_controller = new TaskController();
-
     const handleDone = async () => {
-        await task_controller.deleteTack(props.task.id);
+        await container.resolve(TaskController).deleteTack(props.task.id);
         props.handleDoneTask();
     };
 

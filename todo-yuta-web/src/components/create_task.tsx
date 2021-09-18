@@ -1,19 +1,19 @@
 import { useState } from 'react';
-import { TaskController } from '../lib/controller/task_controller';
+import { TaskController } from '../lib/controller/TaskController';
 import BackTopButton from './back_top_button';
 import ContentsTitle from './contents_title';
 import './create_task.scss';
 import RegisterTaskbutton from './register_task_button';
+import { container } from 'tsyringe';
 
 
 
 function CreateTask(props: any){
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('')
-    const taskController = new TaskController();
 
     const handleClickRegisterTask = async () => {
-        await taskController.registerTask(title,description)
+        await container.resolve(TaskController).registerTask(title,description)
         props.setIsCreate(false)
     } 
 
