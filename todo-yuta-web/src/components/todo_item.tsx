@@ -20,7 +20,6 @@ function Todo_item(props: any){
                 </div>
             </div>
             <div　className='todo-desc'>
-                <p>詳細</p>
                 <p>{props.task.description}</p>
             </div>
         </div>
