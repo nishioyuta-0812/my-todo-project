@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export class TaskDriver{
 
 
@@ -7,11 +8,13 @@ export class TaskDriver{
 
         return await axios.get<TasksJson>('http://localhost:3000/tasks')
         .then(res => {
+            console.log(res.data);
             return res.data;
         })
     }
 
     async registerTask(title: string, description: string): Promise<void> {
+
 
         const task = {
             title: title,
@@ -19,10 +22,12 @@ export class TaskDriver{
         };
 
         await axios.post('http://localhost:3000/create', {task});
+
     }
 
     async deleteById(id: number): Promise<void>{
         await axios.delete(`http://localhost:3000/delete/${id}`);
+
     }
 
 }
@@ -35,6 +40,6 @@ export type TasksJson = {
 export type TaskJson = {
     id: number
     title: string
-    task_description: string
+    task_descrption: string
     created_at: string
 }

@@ -17,7 +17,6 @@ function CreateTask(props: Props){
 
     const handleClickRegisterTask = async () => {
         await container.resolve(TaskController).registerTask(title,description);
-        console.log(props);
         props.setIsCreate(false);
     } 
 

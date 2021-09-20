@@ -12,10 +12,16 @@ function Todo_item(props: any){
 
     return(
         <div className='todo-item'>
-            <i className='todo-icon'></i>
-            <p　className='todo-title'>{props.task.title}</p>
-            <div className='done-task-button'>
-                <p onClick={() => handleDone()}>DONE</p>
+            <div className='initial-item'>
+                <i className='todo-icon'></i>
+                <p　className='todo-title'>{props.task.title}</p>
+                <div className='done-task-button'>
+                    <p onClick={() => handleDone()}>DONE</p>
+                </div>
+            </div>
+            <div　className='todo-desc'>
+                <p>詳細</p>
+                <p>{props.task.description}</p>
             </div>
         </div>
     );

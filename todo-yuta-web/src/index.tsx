@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { container } from "tsyringe";
-import { TaskGateway } from "./lib/controller/gateway/TaskGateway";
+import { TaskGateway } from "./lib/gateway/TaskGateway";
 container.register('TaskPort', {useClass: TaskGateway})
 ReactDOM.render(
   <React.StrictMode>

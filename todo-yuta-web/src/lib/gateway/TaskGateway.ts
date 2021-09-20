@@ -1,6 +1,6 @@
 import { injectable } from "tsyringe";
-import { Description, Task, TaskId, Tasks, Title } from "../../domain/task";
-import  TaskPort  from "../../port/TaskPort";
+import { Description, Task, TaskId, Tasks, Title } from "../domain/task";
+import  TaskPort  from "../port/TaskPort";
 import { TaskDriver } from "../driver/TaskDriver";
 
 @injectable()
@@ -10,7 +10,7 @@ export class TaskGateway implements TaskPort{
         
         const taskEntiteis = await this.taskDriver.getTasks()
         
-        return new Tasks( taskEntiteis.tasks.map((task) => new Task(new TaskId(task.id), new Title( task.title), new Description( task.task_description))));
+        return new Tasks( taskEntiteis.tasks.map((task) => new Task(new TaskId(task.id), new Title( task.title), new Description( task.task_descrption))));
     }
     
     async registerTask(title: Title, description: Description): Promise<void> {
