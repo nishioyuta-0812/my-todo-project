@@ -5,6 +5,8 @@ import ContentsTitle from './contents_title';
 import './create_task.scss';
 import RegisterTaskbutton from './register_task_button';
 import { container } from 'tsyringe';
+import { toast } from 'react-toastify';
+import success from '../components/icons';
 
 interface Props {
     onClick: () => void;
@@ -17,8 +19,18 @@ function CreateTask(props: Props){
 
     const handleClickRegisterTask = async () => {
         await container.resolve(TaskController).registerTask(title,description);
+        toast.success('　タスクを登録したよ！', {
+            icon: success,
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
         props.setIsCreate(false);
-    } 
+    }
 
     return (
         <div className='create-task'>
@@ -34,7 +46,7 @@ function CreateTask(props: Props){
                 </div>
                 <RegisterTaskbutton onClick={() => handleClickRegisterTask()}></RegisterTaskbutton>
             </div>
-            <BackTopButton onClick={() => props.onClick()}></BackTopButton>
+            <BackTopButton onClick={props.onClick}></BackTopButton>
 
         </div>
     );

@@ -2,11 +2,23 @@
 import { container } from 'tsyringe';
 import { TaskController } from '../lib/controller/TaskController';
 import './todo_item.scss';
+import { toast } from 'react-toastify';
+import success from './icons';
 
 function Todo_item(props: any){
 
     const handleDone = async () => {
-        await container.resolve(TaskController).deleteTack(props.task.taskId);
+        await container.resolve(TaskController).doneTack(props.task.taskId);
+        toast.success('　タスクを完了したよ！', {
+            icon: success,
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
         props.handleDoneTask();
     };
 

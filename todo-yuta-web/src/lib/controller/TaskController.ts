@@ -26,8 +26,8 @@ export class TaskController{
         }
     }
 
-    async deleteTack(id: number): Promise<void>{
-        await this.taskUseCase.deleteById(new TaskId(id));
+    async doneTack(id: number): Promise<void>{
+        await this.taskUseCase.doneTask(new TaskId(id));
     }
 
 }
