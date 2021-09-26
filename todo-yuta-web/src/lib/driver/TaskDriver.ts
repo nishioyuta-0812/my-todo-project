@@ -1,6 +1,7 @@
 import axios from "axios";
+import { injectable } from "tsyringe";
 
-
+@injectable()
 export class TaskDriver{
 
 

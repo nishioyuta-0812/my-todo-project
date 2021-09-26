@@ -6,7 +6,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { container } from "tsyringe";
 import { TaskGateway } from "./lib/gateway/TaskGateway";
+import { WeatherGateway } from './lib/gateway/WetherGateway';
 container.register('TaskPort', {useClass: TaskGateway})
+container.register('WeatherPort', {useClass: WeatherGateway})
 ReactDOM.render(
   <React.StrictMode>
     <App />

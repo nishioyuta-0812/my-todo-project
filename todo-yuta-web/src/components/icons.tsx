@@ -1,4 +1,4 @@
-import success from '../images/images.jpeg';
+import success from '../images/EccDfVKU4AA1EWH.jpeg';
 import './icons.scss';
 
 /* eslint-disable jsx-a11y/alt-text */

@@ -1,6 +1,6 @@
 .App {
   height: 100%;
-  background-image: url(images/5-toubun_no_hanayome_91.jpeg);
+  background-image: url(images/mikukabegami.jpeg);
   background-size: cover;
 }
 
@@ -8,14 +8,19 @@
   background-color: transparent;
   height: 100px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  color: white;
+  color: black;
 
   .page-title{
-    font-size: 300%;
+    
     margin-left: 100px;
     font-family: cursive;
+    width: 300px;
+    margin-bottom: 0;
+    align-items: center;
+    h1{
+      margin: 0px;
+    }
   }
 }
 
