@@ -3,8 +3,8 @@
     "username": "admin",
     "password": "admin",
     "database": "ytodo",
-    "host": "127.0.0.1",
-    "port": "15432",
+    "host": "ytodo-db-svc",
+    "port": "5432",
     "dialect": "postgres",
     "operatorsAliases": false
   },

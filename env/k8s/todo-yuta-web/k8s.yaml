@@ -10,7 +10,7 @@ spec:
     protocol: TCP
     targetPort: 3001
   selector:
-    app: todo-yuta-web
+    name: todo-yuta-web
   sessionAffinity: None
   type: LoadBalancer
 status:
@@ -20,8 +20,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: todo-yuta-web
-  labels:
-    name: todo-yuta-web
 spec:
   minReadySeconds: 30
   strategy:
@@ -29,12 +27,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: todo-yuta-web
+      name: todo-yuta-web
   template:
     metadata:
-      name: todo-yuta-web
       labels:
-        app: todo-yuta-web
+        name: todo-yuta-web
     spec:
       containers:
       - image: yutanishio0812/todo-yuta-web:latest
