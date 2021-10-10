@@ -15,7 +15,7 @@ function Weather(){
     }
 
     useEffect(() => {
-        f('Fujimino',3560050);
+        f('SAITAMA',3560050);
     }, [])
 
 

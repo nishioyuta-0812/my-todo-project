@@ -27,3 +27,9 @@ exports.delete_task = function(req, res) {
         res.send("Data Deleted.");
     });
 };
+
+exports.reset_task = function(req, res) {
+    db.task.destroy({ truncate : true, cascade: false }).then(() => {
+        res.send("Data Reseted.");
+    });
+};

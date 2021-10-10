@@ -10,5 +10,8 @@ module.exports = function(app) {
     .delete(taskList.delete_task);
 
     app.route('/update/:taskId')
+
+    app.route('/reset')
+    .delete(taskList.reset_task);
     
 };
