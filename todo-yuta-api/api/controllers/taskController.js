@@ -41,18 +41,33 @@ exports.reset_task = function (req, res) {
   });
 };
 
-exports.check_notification = async (req, res) => {
-  const messages = [{
-    type: 'text',
-    text: '今日のタスクがまだ残ってるよ！'
-  }];
+exports.check_notification =  (req, res) => {
 
-  try {
-    const re = await client.pushMessage('U615d5fec7a2484a239548014acfac04c',messages);
-    console.log(re);
-    res.send('success');
-  } catch (error) {
-    console.log(`エラー: ${error.statusMessage}`);
-    console.log(error.originalError.response.data);
-  }
+  db.task.findAll()
+    .then(async (tasks) => {
+
+      var messages;
+      if(!tasks.length){
+        messages = [{
+          type: 'text',
+          text: '今日のタスクは全て完了したね！\nお疲れ様！'
+        }];
+      }else{
+        messages = [{
+          type: 'text',
+          text: '今日のタスクがまだ残ってるよ！\n頑張って！'
+        }];
+      }
+
+      try {
+        const re = await client.pushMessage('U615d5fec7a2484a239548014acfac04c',messages);
+        console.log(re);
+        res.send('success');
+      } catch (error) {
+        console.log(`エラー: ${error.statusMessage}`);
+        console.log(error.originalError.response.data);
+      }
+
+    });
+
 }
