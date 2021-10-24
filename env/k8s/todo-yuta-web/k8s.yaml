@@ -6,9 +6,9 @@ metadata:
   name: todo-yuta-web-svc
 spec:
   ports:
-  - port: 3001
-    protocol: TCP
-    targetPort: 3001
+    - port: 3001
+      protocol: TCP
+      targetPort: 3001
   selector:
     name: todo-yuta-web
   sessionAffinity: None
@@ -34,8 +34,7 @@ spec:
         name: todo-yuta-web
     spec:
       containers:
-      - image: yutanishio0812/todo-yuta-web:latest
-        name: todo-yuta-web
-        ports:
-          - containerPort: 3001
-        
+        - image: yutanishio0812/todo-yuta-web:latest
+          name: todo-yuta-web
+          ports:
+            - containerPort: 3001

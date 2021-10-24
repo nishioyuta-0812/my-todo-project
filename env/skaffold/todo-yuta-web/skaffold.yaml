@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2beta24
+kind: Config
+build:
+  artifacts:
+    - image: yutanishio0812/todo-yuta-web
+      context: ../../../todo-yuta-web
+      docker:
+        dockerfile: ../../../todo-yuta-web/Dockerfile
+  local:
+    push: false
+    useBuildkit: true
+deploy:
+  kubectl:
+    manifests:
+      - ../../k8s/todo-yuta-web/k8s*
+portForward:
+  - resourceType: service
+    resourceName: todo-yuta-web-svc
+    port: 3001
+    localPort: 3001
