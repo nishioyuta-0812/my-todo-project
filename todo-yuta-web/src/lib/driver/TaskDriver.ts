@@ -7,7 +7,7 @@ export class TaskDriver{
 
     async getTasks(): Promise<TasksJson> {
 
-        return await axios.get<TasksJson>('http://localhost:3000/tasks')
+        return await axios.get<TasksJson>('http://todo-yuta-api-svc:3000/tasks')
         .then(res => {
             console.log(res.data);
             return res.data;
