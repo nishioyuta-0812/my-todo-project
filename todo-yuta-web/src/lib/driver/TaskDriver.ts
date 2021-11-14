@@ -7,7 +7,7 @@ export class TaskDriver{
 
     async getTasks(): Promise<TasksJson> {
 
-        return await axios.get<TasksJson>('http://todo-yuta-api-svc:3000/tasks')
+        return await axios.get<TasksJson>('http://35.200.10.242:3000/tasks')
         .then(res => {
             console.log(res.data);
             return res.data;
@@ -22,12 +22,12 @@ export class TaskDriver{
             description: description
         };
 
-        await axios.post('http://localhost:3000/create', {task});
+        await axios.post('http://35.200.10.242:3000/create', {task});
 
     }
 
     async deleteById(id: number): Promise<void>{
-        await axios.delete(`http://localhost:3000/delete/${id}`);
+        await axios.delete(`http://35.200.10.242:3000/delete/${id}`);
 
     }
 
